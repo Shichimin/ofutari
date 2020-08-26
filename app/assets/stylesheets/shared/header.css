@@ -30,12 +30,6 @@
   margin-right: 30px;
 }
 
-.logout {
-  text-decoration: none;
-  margin-right: 3vw;
-  color: #333333;
-}
-
 .login {
   text-decoration: none;
   margin-right: 3vw;
@@ -44,6 +38,17 @@
 
 .sign-up {
   text-decoration: none;
+  color: #333333;
+}
+
+.user-nickname {
+  text-decoration: none;
+  color: #333333;
+}
+
+.logout {
+  text-decoration: none;
+  margin-right: 3vw;
   color: #333333;
 }
 
