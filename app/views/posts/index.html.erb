@@ -1,1 +1,20 @@
-<%= @posts %>
+<%= render "shared/header" %>
+<div class='main'>
+  <%# ユーザー投稿一覧 %>
+  <div class='user-posts'>
+    <ul class='item-lists'>
+      <% @posts.order('id DESC').each do |post| %>
+      <li class='list'>
+        <div class='post-info'>
+          <h3 class='post-title'>
+            <%= post.title %>
+          </h3>
+          <div class='post-description'>
+            <%= post.description %>
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
