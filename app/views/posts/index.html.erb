@@ -5,6 +5,7 @@
     <ul class='item-lists'>
       <% @posts.order('id DESC').each do |post| %>
       <li class='list'>
+        <%= link_to post_path(post.id) do %>
         <div class='post-info'>
           <h3 class='post-title'>
             <%= post.title %>
@@ -16,6 +17,7 @@
             <%= post.description %>
           </div>
         </div>
+        <% end %>
       </li>
       <% end %>
     </ul>
