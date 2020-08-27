@@ -14,7 +14,10 @@
             <%= User.find_by(id: post.user_id).nickname %>
           </div>
           <div class='post-category'>
-            <%= post.category %>
+            <%= post.category.name %>
+          </div>
+          <div class='post-prefecture'>
+            <%= post.prefecture.name %>
           </div>
           <div class='post-description'>
             <%= post.description %>
@@ -25,4 +28,9 @@
       <% end %>
     </ul>
   </div>
+</div>
+<div class='post-btn'>
+  <%= link_to new_post_path do %>
+    <span class='post-btn-text'>投稿</span>
+  <% end %>
 </div>
