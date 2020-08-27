@@ -1,0 +1,19 @@
+<%= render "shared/header" %>
+
+<div class='post-info'>
+  <h3 class='post-title'>
+    <%= @post.title %>
+  </h3>
+  <div class='post-user'>
+    <%= User.find_by(id: @post.user_id).nickname %>
+  </div>
+  <div class='post-category'>
+    <%= @post.category.name %>
+  </div>
+  <div class='post-prefecture'>
+    <%= @post.prefecture.name %>
+  </div>
+  <div class='post-description'>
+    <%= @post.description %>
+  </div>
+</div>
