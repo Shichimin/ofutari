@@ -2,10 +2,10 @@
 <div class='main'>
   <%# ユーザー投稿一覧 %>
   <div class='user-posts'>
-    <ul class='item-lists'>
+    <ul class='post-lists'>
       <% @posts.order('id DESC').each do |post| %>
       <li class='list'>
-        <%= link_to post_path(post.id) do %>
+        <%= link_to post_path(post.id), class: 'post-content' do %>
         <div class='post-info'>
           <h3 class='post-title'>
             <%= post.title %>
