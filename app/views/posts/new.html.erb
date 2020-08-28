@@ -1,0 +1,40 @@
+<%= render "shared/header" %>
+
+<div class="post-main">
+    <%= form_with model: @user, local: true do |f| %>
+      <div class="new-post">
+        <div class="weight-bold-text">
+          タイトル
+        <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :title, class:"post-title", id:"post-title", placeholder:"タイトル" %>
+      </div>
+        <div class="weight-bold-text">
+          詳細
+        <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :description, class:"post-description", id:"post-description", placeholder:"詳細" %>
+      <div class="form">
+        <div class="weight-bold-text">
+          カテゴリー
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"post-category"}) %>
+        <div class="weight-bold-text">
+          都道府県
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"post-prefecture"}) %>
+      </div>
+        <div class="weight-bold-text">
+          URL
+        <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :url, class:"post-url", id:"post-url", placeholder:"URL" %>
+      </div>
+      <div class="post-create-btn-contents">
+        <%= f.submit "投稿する" ,class:"post-create-btn" %>
+        <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <% end %>
+</div>
