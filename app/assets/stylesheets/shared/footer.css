@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color:#83E85A;
+  margin-top: 30px;
 }
 
 .ofutari-footer-text-wrap {
