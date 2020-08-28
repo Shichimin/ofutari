@@ -29,8 +29,10 @@
     </ul>
   </div>
 </div>
-<div class='post-btn'>
-  <%= link_to new_post_path do %>
-    <span class='post-btn-text'>投稿</span>
+
+<%= link_to new_post_path, class: 'post-btn' do %>
+  <div class='post-btn-text'>
+    投稿
+  </div>
   <% end %>
 </div>
