@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :move_to_login, except: [:index, :show]
+
   def index
     @posts = Post.all
   end
@@ -27,5 +29,11 @@ class PostsController < ApplicationController
       :prefecture_id,
       :url
     ).merge(user_id: current_user.id)
+  end
+
+  def move_to_login
+    unless user_signed_in?
+      redirect_to user_session_path
+    end
   end
 end
