@@ -7,4 +7,25 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @user = User.find_by(id: @post.user_id)
   end
+
+  def new
+    @post = Post.new
+  end
+
+  def create
+    @post = Post.create(post_params)
+    redirect_to root_path
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(
+      :title,
+      :description,
+      :category_id,
+      :prefecture_id,
+      :url
+    ).merge(user_id: current_user.id)
+  end
 end
