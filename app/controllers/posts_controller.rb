@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update]
   before_action :move_to_login, except: [:index, :show]
 
   def index
@@ -6,7 +7,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by(id: params[:id])
     @user = User.find_by(id: @post.user_id)
   end
 
@@ -19,6 +19,14 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def update
+    if @post.update(post_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
     post = Post.find_by(id: params[:id])
     if post.destroy
@@ -29,6 +37,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_post
+    @post = Post.find_by(id: params[:id])
+  end
 
   def post_params
     params.require(:post).permit(
