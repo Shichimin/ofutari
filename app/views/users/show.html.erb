@@ -11,6 +11,8 @@
 
 <% if user_signed_in? && current_user.id == @user.id %>
   <%= link_to 'ユーザー情報の編集', edit_user_path(@user.id), method: :get, class: "user-red-btn" %>
+<% else %>
+  <%= link_to 'メッセージを送る', '#', method: :get, class: "chat-red-btn" %>
 <% end %>
 
 <%= render "shared/footer" %>
