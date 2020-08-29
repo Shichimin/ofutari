@@ -1,0 +1,16 @@
+<%= render "shared/header" %>
+
+<div class='user-info'>
+  <h3 class='user-nickname'>
+    <%= @user.nickname %>
+  </h3>
+  <div class='post-category'>
+    <%= "自己紹介カラムをあとから追加" %>
+  </div>
+</div>
+
+<% if user_signed_in? && current_user.id == @user.id %>
+  <%= link_to 'ユーザー情報の編集', edit_user_path(@user.id), method: :get, class: "user-red-btn" %>
+<% end %>
+
+<%= render "shared/footer" %>
