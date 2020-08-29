@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   belongs_to_active_hash :prefecture
  
   belongs_to :user
+  has_many :comments
 
   # 空の投稿を保存できないようにする
   with_options presence: true do
