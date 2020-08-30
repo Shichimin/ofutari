@@ -19,7 +19,7 @@
       <%= fields_for @room_user do |r| %>
         <%= r.hidden_field :user_id, value: @user.id %>
       <% end %>
-      <%= f.submit 'メッセージを送る', class: 'chat-room-form__action-btn'%>
+      <%= f.submit 'メッセージを送る', class: "chat-red-btn" %>
     <% end %>
   <% end %>
 <% end %>
