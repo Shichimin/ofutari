@@ -8,10 +8,14 @@ class RoomsController < ApplicationController
     @room_user1 = RoomUser.create(room_id: @room.id, user_id: current_user.id)
     @room_user2 = RoomUser.create(room_params)
     if @room.save
-      redirect_to root_path
+      redirect_to room_path(@room.id)
     else
       render :new
     end
+  end
+
+  def show
+    @room = Room.find(params[:id])
   end
 
   private

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :move_to_login
 
   def show
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
 
     @room_user_by_current_user = RoomUser.where(user_id: current_user.id)
     @room_user_by_user = RoomUser.where(user_id: @user.id)

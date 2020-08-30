@@ -13,7 +13,7 @@
   <%= link_to 'ユーザー情報の編集', edit_user_registration_path(@user.id), method: :get, class: "user-red-btn" %>
 <% else %>
   <% if @is_room == true %>
-    <%= link_to 'メッセージを送る', '#', method: :get, class: "chat-red-btn" %>
+    <%= link_to 'メッセージを送る', room_path(@room_id), method: :get, class: "chat-red-btn" %>
   <% else %>
     <%=form_with model: @room, local: true do |f|%>
       <%= fields_for @room_user do |r| %>
