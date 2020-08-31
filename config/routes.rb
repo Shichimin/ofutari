@@ -5,5 +5,9 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
   resources :users, only: [:show, :edit, :update]
-  resources :rooms, only: [:new, :create, :show]
+  resources :rooms, only: [:new, :create, :show] do
+    collection do
+      post 'chat_message'
+    end
+  end
 end

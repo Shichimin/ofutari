@@ -31,6 +31,13 @@ class RoomsController < ApplicationController
     redirect_to room_path
   end
 
+  def chat_message
+    @message = Message.new(content: params[:content], room_id: params[:room_id], user_id: current_user.id)
+    if @message.save
+      ActionCable.server.broadcast 'room_channel', content: @message
+    end
+  end
+
   private
 
   def room_params
