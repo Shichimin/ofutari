@@ -12,7 +12,16 @@
 <% if user_signed_in? && current_user.id == @user.id %>
   <%= link_to 'ユーザー情報の編集', edit_user_registration_path(@user.id), method: :get, class: "user-red-btn" %>
 <% else %>
-  <%= link_to 'メッセージを送る', '#', method: :get, class: "chat-red-btn" %>
+  <% if @is_room == true %>
+    <%= link_to 'メッセージを送る', room_path(@room_id), method: :get, class: "chat-red-btn" %>
+  <% else %>
+    <%=form_with model: @room, local: true do |f|%>
+      <%= fields_for @room_user do |r| %>
+        <%= r.hidden_field :user_id, value: @user.id %>
+      <% end %>
+      <%= f.submit 'メッセージを送る', class: "chat-red-btn" %>
+    <% end %>
+  <% end %>
 <% end %>
 
 <%= render "shared/footer" %>

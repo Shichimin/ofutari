@@ -1,0 +1,17 @@
+<%= render "shared/header" %>
+
+<%= @room.id %>
+
+<div id='messages'>
+  <% @messages.each do |message| %>
+    <p><%= message.content %></p>
+  <% end %>
+</div>
+
+<%= form_with(model: @message, url: chat_message_rooms_path) do |f| %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.text_field :content, id: 'message_content' %>
+  <%= f.submit '送信' %>
+<% end %>
+
+<%= render "shared/footer" %>
