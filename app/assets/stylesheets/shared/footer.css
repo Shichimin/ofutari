@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   background-color:#83E85A;
-  margin-top: 30px;
 }
 
 .ofutari-footer-text-wrap {
@@ -11,9 +10,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.ofutari-footer-text {
-  margin-right: 30px;
-  margin-left: 30px;
 }
