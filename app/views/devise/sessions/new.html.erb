@@ -2,25 +2,33 @@
 
 <h2>Log in</h2>
 <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.label :remember_me %><br />
-      <%= f.check_box :remember_me %>
+  <div class="mb-3">
+    <div class="form-control">
+      <%= f.label :email, class:"form-label" %><br />
+      <%= f.email_field :email, autofocus: true %>
     </div>
-  <% end -%>
+  </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="mb-3">
+    <div class="form-control">
+      <%= f.label :password, lass:"form-label" %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me, class:"form-check-input" %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end -%>
+  </div>
+
+  <div class="mb-3">
+    <div class="btn btn-primary">
+      <%= f.submit "Log in" %>
+    </div>
   </div>
 <% end %>
 

@@ -13,3 +13,7 @@
   font-size: 12px;
   font-weight: bold;
 }
+
+.container {
+  display: flex;
+}

@@ -1,32 +1,42 @@
 <%= render "shared/header" %>
-<div class='main'>
-  <%# ユーザー投稿一覧 %>
-  <div class='user-posts'>
-    <ul class='post-lists'>
+
+<%# ユーザー投稿一覧 %>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <% @posts.order('id DESC').each do |post| %>
-      <li class='list'>
-        <%= link_to post_path(post.id), class: 'post-content' do %>
-        <div class='post-info'>
-          <h3 class='post-title'>
-            <%= post.title %>
-          </h3>
-          <div class='post-user'>
-            <%= post.user.nickname %>
-          </div>
-          <div class='post-category'>
-            <%= post.category.name %>
-          </div>
-          <div class='post-prefecture'>
-            <%= post.prefecture.name %>
-          </div>
-          <div class='post-description'>
-            <%= post.description %>
-          </div>
+        <div class="col">
+          <%= link_to post_path(post.id), class: 'post-content' do %>
+            <div class="card shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" role="img" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+              <div class="card-body">
+                <div class='post-title'>
+                  <%= post.title %>
+                </div>
+                <div class="card-text">
+                  <%= post.description %>
+                </div>
+                <div class='post-user'>
+                  <%= post.user.nickname %>
+                </div>
+                <div class='post-category'>
+                  <%= post.category.name %>
+                </div>
+                <div class='post-prefecture'>
+                  <%= post.prefecture.name %>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">
+                    <%= post.created_at %>
+                  </small>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
-        <% end %>
-      </li>
       <% end %>
-    </ul>
+    </div>
   </div>
 </div>
 
