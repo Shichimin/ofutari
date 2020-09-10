@@ -1,27 +1,26 @@
 <%= render "shared/header" %>
 
-<h2>Log in</h2>
-<%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="text-center">
+  <div class='mx-auto'>
+    <%= form_with model: @user, url: user_session_path, id: 'form_signin', class: 'form_signin', local: true do |f| %>
+      <h1 class="h3 mb-3 font-weight-normal">サインインをどうぞ</h1>
+      <div class="form-label" >
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+      <div class="form-label">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+      <div class="form-check mb-3">
+        <%= f.check_box :remember_me, class:"form-check-input" %>
+        <%= f.label :remember_me %>
+      </div>
+      <div class="btn btn-primary">
+        <%= f.submit "Log in" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.label :remember_me %><br />
-      <%= f.check_box :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+</div>
 
 <%= render "shared/footer" %>
