@@ -10,4 +10,5 @@ Rails.application.routes.draw do
       post 'chat_message'
     end
   end
+  resources :easysessions, only: :create
 end

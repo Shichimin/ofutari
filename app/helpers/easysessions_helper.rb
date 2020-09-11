@@ -1,0 +1,2 @@
+module EasysessionsHelper
+end
