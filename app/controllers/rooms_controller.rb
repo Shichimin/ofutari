@@ -15,6 +15,7 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @partner_user = User.find_by(id: params[:user_id])
     @room = Room.find(params[:id])
 
     if RoomUser.where(user_id: current_user.id, room_id: @room.id).present?
