@@ -1,17 +1,39 @@
 <%= render "shared/header" %>
 
-<%= @room.id %>
+<%= @partner_user.nickname %>
 
-<div id='messages'>
+<div class='chat-container', id='chat-container'>
   <% @messages.each do |message| %>
-    <p><%= message.content %></p>
+    <ul class="chat-messages">
+      <% if message.user_id != current_user.id%>
+        <li class='left-side'>
+          <div class='user-pic'>
+            <%= image_tag 'dog.png' %>
+          </div>
+          <div class='message-text'>
+            <%= message.content %>
+          </div>
+        </li>
+      <% else %>
+        <li class='right-side'>
+          <div class='user-pic'>
+            <%= image_tag 'cat.png', id: "current_user_img" %>
+          </div>
+          <div class='message-text'>
+            <%= message.content %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
 </div>
 
-<%= form_with(model: @message, url: chat_message_rooms_path) do |f| %>
-  <%= f.hidden_field :room_id, value: @room.id %>
-  <%= f.text_field :content, id: 'message_content' %>
-  <%= f.submit '送信' %>
-<% end %>
+<div class='new-message'>
+  <%= form_with(model: @message, url: chat_message_rooms_path) do |f| %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.text_field :content, id: 'message-content' %>
+    <%= f.submit '送信' %>
+  <% end %>
+</div>
 
 <%= render "shared/footer" %>

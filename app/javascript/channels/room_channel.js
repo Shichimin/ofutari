@@ -10,9 +10,23 @@ consumer.subscriptions.create("RoomChannel", {
   },
 
   received(data) {
-    const html = `<p>${data.content.content}</p>`;
-    const messages = document.getElementById('messages');
-    const newMessage = document.getElementById('message_content');
+    const img = document.getElementById('current_user_img').getAttribute('src');
+    console.log(img);
+    const url = img.substring(0, img.indexOf("-"));
+    console.log(url);
+    const messages = document.getElementById('chat-container');
+    const newMessage = document.getElementById('message-content');
+    const html = `
+    <ul class="chat-messages">
+      <li class='right-side'>
+        <div class='user-pic'>
+          <img src='${url}.png'>
+        </div>
+        <div class='message-text'>
+          ${data.content.content}
+        </div>
+      </li>
+      </ul>`;
     messages.insertAdjacentHTML('beforeend', html);
     newMessage.value='';
   }
