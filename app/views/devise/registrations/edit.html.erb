@@ -1,79 +1,96 @@
 <%= render "shared/header" %>
 
-<h2>Edit</h2>
-
-<%= form_with model: @user, url: user_registration_path, id: 'edit_user', class: 'edit_user', local: true do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+<div class='account-page' id='account-page'>
+  <div class='account-page__inner clearfix'>
+    <div class='account-page__inner--left account-page__header'>
+      <h2>Edit Account</h2>
+      <h5>アカウントの編集</h5>
+    </div>
+    <div class='account-page__inner--right user-form'>
+      <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+        <%= devise_error_messages! %>
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :nickname %>
+          </div>
+          <div class='field-input'>
+            <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :email %>
+          </div>
+          <div class='field-input'>
+            <%= f.email_field :email, autocomplete: "email" %>
+          </div>
+        </div>
+        <div class="field">
+          <div class='field-label'>
+            <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+          </div>
+          <div class='field-input'>
+            <%= f.password_field :current_password, autocomplete: "current-password" %>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :password %>
+            <i>(英数字8文字以上)</i>
+          </div>
+          <div class='field-input'>
+            <%= f.password_field :password, autocomplete: "off"%>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :password_confirmation%>
+          </div>
+          <div class='field-input'>
+            <%= f.password_field :password_confirmation, autocomplete: "off"%>
+          </div>
+        </div>
+        <div class="field">
+          <div class='field-label'>
+            <%= f.label :last_name %>
+          </div>
+          <div class='field-input'>
+            <%= f.text_field :last_name, autofocus: true %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">
+            <%= f.label :first_name %><br />
+          </div>
+          <div class='field-input'>
+            <%= f.text_field :first_name, autofocus: true %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="field-label">
+            <%= f.label :birthday %><br />
+          </div>
+          <div class='input-birth-wrap'>
+            <%= raw sprintf(
+                      f.date_select(
+                        :birthday,
+                        class:'select-birth',
+                        id:"birth-date",
+                        use_month_numbers: true,
+                        prompt:'--',
+                        start_year: 1930,
+                        end_year: (Time.now.year - 5),
+                        date_separator: '%s'),
+                      "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+          </div>
+        <div class='actions'>
+          <%= f.submit "Edit Account", class: 'btn'%>
+          <%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "本当によろしいですか？" }, method: :delete, class: 'btn', id: 'delete-btn' %>
+        </div>
+      </div>
+    </div>
     <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-    <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :birthday %><br />
-    <div class='input-birth-wrap'>
-      <%= raw sprintf(
-                  f.date_select(
-                    :birthday,
-                    class:'select-birth',
-                    id:"birth-date",
-                    use_month_numbers: true,
-                    prompt:'--',
-                    start_year: 1930,
-                    end_year: (Time.now.year - 5),
-                    date_separator: '%s'),
-                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-    </div>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ユーザー情報を更新" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>ユーザーを削除しますか? <%= button_to "削除", registration_path(resource_name), data: { confirm: "本当によろしいですか？" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>
 
 <%= render "shared/footer" %>

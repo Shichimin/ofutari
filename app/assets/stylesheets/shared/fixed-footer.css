@@ -1,0 +1,10 @@
+.fixed-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#83E85A;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+}

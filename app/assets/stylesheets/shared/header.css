@@ -54,6 +54,19 @@ a {
   color: #333333;
 }
 
-li{
+.navbar li{
   list-style: none;
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 2px solid #57C3E9;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.navbar li:hover {
+  border-color: #9bdbf2;
+  color: #9bdbf2;
 }

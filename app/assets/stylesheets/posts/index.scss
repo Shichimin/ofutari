@@ -10,20 +10,15 @@ a {
   background-color: pink;
 }
 
-.toppage-footer {
+.post-btn {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color:#83E85A;
-  height: 50px;
-}
-
-.toppage-footer-text-wrap {
-  display: flex;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
 }
 
-.toppage-footer-text {
+.post-btn-text {
+  text-decoration: none;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
