@@ -1,13 +1,20 @@
 .ofutari-footer {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color:#83E85A;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
 }
 
 .ofutari-footer-text-wrap {
-  width: 100%;
-  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.ofutari-footer-text {
+  text-align: center;
 }

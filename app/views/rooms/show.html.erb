@@ -1,17 +1,48 @@
 <%= render "shared/header" %>
 
-<%= @room.id %>
-
-<div id='messages'>
-  <% @messages.each do |message| %>
-    <p><%= message.content %></p>
-  <% end %>
+<div class='chat-container'>
+<%= @partner_user.nickname %>
+  <div class='container'>
+    <div class='container-inner', id='container-inner'>
+      <% @messages.each do |message| %>
+        <ul class="chat-messages">
+          <% if message.user_id != current_user.id%>
+            <li class='left-side'>
+              <div class='user-pic'>
+                <%= image_tag 'dog.png' %>
+              </div>
+              <div class='message-text'>
+                <%= message.content %>
+              </div>
+            </li>
+          <% else %>
+            <li class='right-side'>
+              <div class='user-pic'>
+                <%= image_tag 'cat.png', id: "current_user_img" %>
+              </div>
+              <div class='message-text'>
+                <%= message.content %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class='new-message'>
+  <div class='form-content'>
+    <%= form_with(model: @message, url: chat_message_rooms_path) do |f| %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.text_field :content, id: 'send_message' %>
+      <%= f.submit '送信', class: 'send_btn' %>
+    <% end %>
+  </div>
 </div>
 
-<%= form_with(model: @message, url: chat_message_rooms_path) do |f| %>
-  <%= f.hidden_field :room_id, value: @room.id %>
-  <%= f.text_field :content, id: 'message_content' %>
-  <%= f.submit '送信' %>
-<% end %>
-
 <%= render "shared/footer" %>
+
+<script>
+  const obj = document.getElementById("container-inner");
+  obj.scrollTop = obj.scrollHeight;
+</script>
