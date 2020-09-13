@@ -14,8 +14,8 @@ consumer.subscriptions.create("RoomChannel", {
     console.log(img);
     const url = img.substring(0, img.indexOf("-"));
     console.log(url);
-    const messages = document.getElementById('chat-container');
-    const newMessage = document.getElementById('message-content');
+    const messages = document.getElementById('container-inner');
+    const newMessage = document.getElementById('send_message');
     const html = `
     <ul class="chat-messages">
       <li class='right-side'>
@@ -28,6 +28,8 @@ consumer.subscriptions.create("RoomChannel", {
       </li>
       </ul>`;
     messages.insertAdjacentHTML('beforeend', html);
+    const obj = document.getElementById("container-inner");
+    obj.scrollTop = obj.scrollHeight;
     newMessage.value='';
   }
 });

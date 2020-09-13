@@ -9,3 +9,21 @@ a {
 .post-info {
   background-color: pink;
 }
+
+.toppage-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#83E85A;
+  height: 50px;
+}
+
+.toppage-footer-text-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toppage-footer-text {
+  text-align: center;
+}
