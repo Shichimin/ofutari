@@ -39,17 +39,8 @@
   </div>
 </div>
 
-<footer class='toppage-footer'>
-  <div class='toppage-footer-text-wrap'>
-    <div class='toppage-footer-text'>
-      <%= 'Copyright(c) 2020 Ofutari' %>
-    </div>
-  </div>
-</footer>
+<%= render "shared/footer" %>
 
-<%= link_to new_post_path, class: 'post-btn' do %>
-  <div class='post-btn-text'>
-    投稿
-  </div>
-  <% end %>
+<div class='post-btn'>
+  <%= link_to "投稿", new_post_path, class: "post-btn-text" %>
 </div>

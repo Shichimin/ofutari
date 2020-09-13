@@ -5,7 +5,6 @@
     <div class='account-page__inner--left account-page__header'>
       <h2>Log in</h2>
       <h5>登録しているユーザーでログイン</h5>
-      <%= render "devise/shared/links"%>
     </div>
     <div class='account-page__inner--right user-form'>
       <%= form_with model: @user, url: user_session_path, local: true do |f|%>
@@ -34,4 +33,4 @@
   </div>
 </div>
 
-<%= render "shared/footer" %>
+<%= render "shared/fixed-footer" %>
